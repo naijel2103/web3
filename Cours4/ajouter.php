@@ -26,17 +26,15 @@
 
         $erreur = false;
       
-        
+        if($_SERVER['REQUEST_METHOD']== 'POST')
+        {
     
             
             if(empty($_POST["nom"])){
                 $nomErreur = "Le nom ne peut pas être vide";
                 $erreur  = true;
             }
-            else if(($_POST["nom"]) == "SLAY"){
-                $nomErreur = "Le nom d'utilisateur est déja pris";
-                $erreur  = true;
-            }
+
             else{
                 $nom = trojan($_POST['nom']);
             }
@@ -77,7 +75,7 @@
               die("Connection failed: " . mysqli_connect_error());
             }
             $sql = "INSERT INTO personnages (id,nom , image ,region, role)
-            VALUES (NULL, $nom,$image ,$region, $role)";
+            VALUES (NULL, '$nom','$image' ,'$region', '$role')";
             if (mysqli_query($conn, $sql)) {
               echo "Enregistrement réussi";
             } else {
@@ -85,7 +83,7 @@
             }
             mysqli_close($conn);
             
-           
+        }
             
         ?>
         <div class="container-fluid" id="bg" >

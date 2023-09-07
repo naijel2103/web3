@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
     <title>creation personnages</title>
 </head>
 <body>
@@ -49,6 +50,8 @@ if ($result->num_rows > 0) {
       <th scope="col-2">icone</th>
       <th scope="col-2">Region</th>
       <th scope="col-2">Role</th>
+      <th scope="col-2">Modifier</th>
+      <th scope="col-2">Supprimer</th>
     </tr>
   </thead>
   <?php
@@ -64,6 +67,8 @@ if ($result->num_rows > 0) {
       <td><img src="<?php echo $row["image"] ?>" id="imagecss"/></td>
       <td><?php echo $row["region"] ?></td>
       <td><?php echo $row["role"] ?></td>
+      <td><a href=<?php echo "modifier.php?id=".$row["id"] ?>><img src="img/hammer.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "supprimer.php?id=".$row["id"] ?>><img src="img/Delete.png" id="imagecss" /> </a></td>
     </tr>
   </tbody>
 
