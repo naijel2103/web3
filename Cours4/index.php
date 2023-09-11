@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,12 @@
 </head>
 <body>
 <?php
+// Set session variables
+echo $_SESSION['connexion'];
+if(isset($_SESSION["connexion"]))
+{
+
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -42,6 +51,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   ?>
+
   <table class="table">
   <thead>
     <tr>
@@ -78,9 +88,14 @@ if ($result->num_rows > 0) {
    
   
   <?php
+  
 }
 } else {
   echo "0 results";
+}
+}else
+{
+  header("Location:usager.php?test=bizarre");
 }
 $conn->close();
 ?>

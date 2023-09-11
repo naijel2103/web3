@@ -1,3 +1,7 @@
+<?php// On démarre toujours la session en haut et dans tous les fichiers.
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,10 @@
     <title>Formulaire</title>
 </head>
 <body>
-    
+<?php// Set session variables
+$_SESSION["connexion"] = true;
+echo "La connexion est réussie" . $_SESSION["connexion"];
+?>
     <?php
         $nom = $image = $region = $role= "";
         $nomErreur = $imageErreur = $regionErreur =$roleErreur = "";
@@ -29,6 +36,8 @@
       
         if($_SERVER['REQUEST_METHOD']== 'POST')
         {
+
+
       
             $id =$_POST['id'];
             if(empty($_POST["nom"])){

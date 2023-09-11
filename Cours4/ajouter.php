@@ -1,3 +1,8 @@
+<?php // On démarre toujours la session en haut et dans tous les fichiers.
+ session_start();
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +24,11 @@
     <title>Formulaire</title>
 </head>
 <body>
+<?php 
+    if(isset($_SESSION["connexion"]))
+    {
+
+?>
     
     <?php
         $nom = $image = $region = $role= "";
@@ -84,6 +94,10 @@
             mysqli_close($conn);
             
         }
+        if($_SESSION['connexion'] == true)
+        {
+
+      
             
         ?>
         <div class="container-fluid" id="bg" >
@@ -114,7 +128,10 @@
             </div>
         </div>
         <?php
-        
+        }
+          }else{
+            header("Location:usager.php");
+          }
         
 
         function trojan($data){
