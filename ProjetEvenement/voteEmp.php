@@ -28,7 +28,7 @@ $_SESSION["connexion"] = true;
 echo "La connexion est réussie" . $_SESSION["connexion"];
 ?>
     <?php
-        $nom = $image = $region = $role= "";
+        $nom = $date = $lieu = $description= "";
         $nomErreur = $imageErreur = $regionErreur =$roleErreur = "";
         if(isset($_GET['id']))
         $id =$_GET['id'];
@@ -75,23 +75,7 @@ echo "La connexion est réussie" . $_SESSION["connexion"];
             }
 
             
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $dbname = "league";
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-            $sql = "UPDATE personnages SET  nom='".$_POST['nom']."', image='".$_POST['image']."', region='".$_POST['region']."', role='".$_POST['role']."' WHERE id=$id";
-            if ($conn->query($sql) === TRUE) {
-              echo "Record updated successfully";
-            } else {
-              echo "Error updating record: " . $conn->error;
-            }
-            $conn->close();
+          
             
         }
             
@@ -99,14 +83,14 @@ echo "La connexion est réussie" . $_SESSION["connexion"];
         $servername = "localhost";
         $username = "root";
         $password = "root";
-        $dbname = "league";
+        $dbname = "evenement";
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        $conn->query('SET NAMES utf8');$sql = "SELECT id, nom,image,region,role FROM personnages WHERE id=$id";
+        $conn->query('SET NAMES utf8');$sql = "SELECT idEntreprise, nom,description,content,neutre,mecontent,departement,date,lieu FROM entreprise WHERE id=$id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           // output data of each row
@@ -114,24 +98,9 @@ echo "La connexion est réussie" . $_SESSION["connexion"];
             ?>
             <div class="container-fluid" id="bg" >
             <img src="img/happy.png" id="emoji"/>
-                    <h1>Veuillez remplir le formulaire pour modifier</h1>
-                <form action="modifier.php" method="post">
-                <label> Nom du personnage : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $row["nom"] ?>"><br>
-                    <p style="color:red;"><?php echo $nomErreur; ?></p>
-    
-                    <label>Lien vers une image du personnage :</label> <input type="text" name="image" value="<?php echo $row["image"] ?>"><br>
-                    <p style="color:red;"><?php echo $imageErreur; ?></p>
-    
-                   <label> Region :</label> <input type="text" name="region" value="<?php echo $row["region"] ?>"> <br>
-                   <p style="color:red;"><?php echo $regionErreur; ?></p>
-    
-    
-                   <label>Role: </label> <input type="text" name="role" value="<?php echo $row["role"] ?>">  <br>
-                   <p style="color:red;"><?php echo $roleErreur; ?></p>
-                   
-                   <input name="id" type="hidden" id="id" value="<?php echo $row["id"]?>"/>
-                   
-    
+                <img src="img/happy.png" id="emoji"/>
+                <img src="img/happy.png" id="emoji"/>   
+                <img src="img/happy.png" id="emoji"/>
              
                     <input type="submit" />
                 </form>
