@@ -13,10 +13,13 @@ session_start();
     <title>Liste des entreprises</title>
 </head>
 <body>
-
-
-
 <?php
+
+if(isset($_SESSION["connexion"]))
+{
+
+
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -62,9 +65,9 @@ if ($result->num_rows > 0) {
       <td><?php echo $row["departement"] ?></td>
       <td><?php echo $row["lieu"] ?></td>
       <td><?php echo $row["date"] ?></td>
-      <td><a href=<?php echo "voteEtu.php?id=".$row["idEntreprise"] ?>><img src="img/voteEtu.png" id="imagecss" /> </a></td>
-      <td><a href="" ><img src="img/voteEmp.png" id="imagecss" /></a></td>
-      <td><a href="" ><img src="img/modif.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "voteEtu.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEtu.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "voteEmp.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEmp.png" id="imagecss" /></a></td>
+      <td><a href=<?php echo "modifier.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/modif.png" id="imagecss" /> </a></td>
       <td><a href=<?php echo "supprimer.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/supp.png" id="imagecss" /> </a></td>
     </tr>
   </tbody>
@@ -80,13 +83,17 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
+}else
+{
+  header("Location:usager.php");
+}
 
 $conn->close();
 ?>
 </table>
 <div class="row text-center">
     <div class="col-12">
-    <a href="" class="btn btn-primary text-center" >ajouter une nouvelle entreprise</a>
+    <a href="ajouter.php" class="btn btn-primary text-center" >ajouter une nouvelle entreprise</a>
   </div>
 </div>
 </body>

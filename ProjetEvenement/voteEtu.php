@@ -1,16 +1,6 @@
 <?php// On démarre toujours la session en haut et dans tous les fichiers.
 session_start();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +15,14 @@ session_start();
 <body>
 
     <?php
-       
-        if(isset($_GET['idEntreprise']))
+        
+
+
         $id =$_GET['idEntreprise'];
+        if(isset($_GET['idEntreprise']))
+        
+
+      
         $erreur = false;
       
         if($_SERVER['REQUEST_METHOD']== 'POST')
@@ -48,20 +43,18 @@ session_start();
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        $conn->query('SET NAMES utf8');$sql = "SELECT nom FROM entreprise WHERE idEntreprise=$id";
+        $conn->query('SET NAMES utf8');$sql = "SELECT * FROM entreprise WHERE idEntreprise=$id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
             ?>
-            <div class="container-fluid" id="bg" >
-            <img src="img/happy.png" id="emoji"/>
-                <img src="img/happy.png" id="emoji"/>
-                <img src="img/happy.png" id="emoji"/>   
-                <img src="img/happy.png" id="emoji"/>
-             
-                    <input type="submit" />
-                </form>
+            <div class="container-fluid  h-100" id="bg" >
+              <div class="row h-100  align-items-center text-center">
+                <div class="col-4">
+                  <img src="img/happy.png" id="emoji" class="img-fluid"/> 
+                   <img src="img/neutral.png" id="emoji" class="img-fluid"/> 
+                   <img src="img/sad.png" id="emoji" class="img-fluid "/>  
                 </div>
                 </div>
             </div>

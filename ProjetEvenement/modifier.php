@@ -1,14 +1,9 @@
+<?php
+session_start();
+?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +13,20 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Formulaire</title>
+    <title>Mofification</title>
 </head>
 <body>
 
     <?php
-        $nom = $image = $region = $role= "";
-        $nomErreur = $imageErreur = $regionErreur =$roleErreur = "";
-        if(isset($_GET['id']))
-        $id =$_GET['id'];
+
+        $_SESSION["connexion"] = true;
+        echo "La connexion est réussie" . $_SESSION["connexion"];
+        if(isset($_SESSION["connexion"]))
+        {
+        $nom = $desc = $lieu = $date= $departement= "";
+        $nomErreur = $descErreur = $lieuErreur =$dateErreur=$departementErreur = "";
+        if(isset($_GET['idEntreprise']))
+        $id =$_GET['idEntreprise'];
         $erreur = false;
       
         if($_SERVER['REQUEST_METHOD']== 'POST')
@@ -34,7 +34,7 @@
 
 
       
-            $id =$_POST['id'];
+            $id =$_POST['idEntreprise'];
             if(empty($_POST["nom"])){
                 $nomErreur = "Le nom ne peut pas être vide";
                 $erreur  = true;
@@ -46,41 +46,49 @@
             
             
         
-               if(empty($_POST["image"])){
-                $imageErreur = "Le lien ne peut pas etre vide";
+               if(empty($_POST["description"])){
+                $descErreur = "La description ne peut pas être vide";
                 $erreur  = true;
             }
             else{
-                 $image = ($_POST['image']);
+                 $desc = ($_POST['description']);
             }
-            if(empty($_POST["region"])){
-                $regionErreur = "vous devez avoir une region";
+            if(empty($_POST["lieu"])){
+                $lieuErreur = "vous devez avoir un lieu";
                 $erreur  = true;
             }
             else{
-                 $region = trojan($_POST['region']);
+                 $lieu = trojan($_POST['lieu']);
             }
             
-               if(empty($_POST["role"])){
-                $roleErreur = "vous devez remplir la confirmation ";
+               if(empty($_POST["date"])){
+                $dateErreur = "vous devez remplir la date ";
                 $erreur  = true;
             }
             else{
-                 $role = trojan($_POST['role']);
+                 $date = trojan($_POST['date']);
+            }
+
+            if(empty($_POST["departement"])){
+                $DepartementErreur = "vous devez remplir la date ";
+                $erreur  = true;
+            }
+            else{
+                 $departement = trojan($_POST['departement']);
             }
 
             
             $servername = "localhost";
             $username = "root";
             $password = "root";
-            $dbname = "league";
+            $dbname = "evenement";
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
             // Check connection
             if ($conn->connect_error) {
               die("Connection failed: " . $conn->connect_error);
             }
-            $sql = "UPDATE personnages SET  nom='".$_POST['nom']."', image='".$_POST['image']."', region='".$_POST['region']."', role='".$_POST['role']."' WHERE id=$id";
+            $sql = "UPDATE entreprise SET nom='".$_POST['nom']."', description='".$_POST['description']."', lieu='".$_POST['lieu']."', date='".$_POST['date']."', departement='".$_POST['departement']."'  WHERE idEntreprise=$id";
             if ($conn->query($sql) === TRUE) {
               echo "Record updated successfully";
             } else {
@@ -94,14 +102,14 @@
         $servername = "localhost";
         $username = "root";
         $password = "root";
-        $dbname = "league";
+        $dbname = "evenement";
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        $conn->query('SET NAMES utf8');$sql = "SELECT id, nom,image,region,role FROM personnages WHERE id=$id";
+        $conn->query('SET NAMES utf8');$sql = "SELECT * FROM entreprise WHERE idEntreprise=$id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           // output data of each row
@@ -111,20 +119,22 @@
             <img src="img/happy.png" id="emoji"/>
                     <h1>Veuillez remplir le formulaire pour modifier</h1>
                 <form action="modifier.php" method="post">
-                <label> Nom du personnage : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $row["nom"] ?>"><br>
+                <label> Nom de l'entreprise : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $row["nom"] ?>"><br>
                     <p style="color:red;"><?php echo $nomErreur; ?></p>
     
-                    <label>Lien vers une image du personnage :</label> <input type="text" name="image" value="<?php echo $row["image"] ?>"><br>
-                    <p style="color:red;"><?php echo $imageErreur; ?></p>
+                    <label>Description de l'entreprise :</label> <input type="text" name="description" value="<?php echo $row["description"] ?>"><br>
+                    <p style="color:red;"><?php echo $descErreur; ?></p>
     
-                   <label> Region :</label> <input type="text" name="region" value="<?php echo $row["region"] ?>"> <br>
-                   <p style="color:red;"><?php echo $regionErreur; ?></p>
+                   <label> Lieu :</label> <input type="text" name="lieu" value="<?php echo $row["lieu"] ?>"> <br>
+                   <p style="color:red;"><?php echo $lieuErreur; ?></p>
     
     
-                   <label>Role: </label> <input type="text" name="role" value="<?php echo $row["role"] ?>">  <br>
-                   <p style="color:red;"><?php echo $roleErreur; ?></p>
+                   <label>Date: </label> <input type="date" name="date" value="<?php echo $row["date"] ?>">  <br>
+                   <p style="color:red;"><?php echo $dateErreur; ?></p>
+                   <label>Departement: </label> <input type="text" name="departement" value="<?php echo $row["departement"] ?>">  <br>
+                   <p style="color:red;"><?php echo $departementErreur; ?></p>
                    
-                   <input name="id" type="hidden" id="id" value="<?php echo $row["id"]?>"/>
+                   <input name="idEntreprise" type="hidden" id="id" value="<?php echo $row["idEntreprise"]?>"/>
                    
     
              
@@ -138,6 +148,10 @@
         } else {
           echo "0 results";
         }
+    }else{
+        header("Location:usager.php");
+      }
+    
         $conn->close();
         
             

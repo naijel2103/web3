@@ -1,6 +1,8 @@
-<?php // On démarre toujours la session en haut et dans tous les fichiers.
+<?php 
  session_start();
  ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,25 +13,25 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Ajouter un entreprise</title>
+    <title>Ajouter une entreprise</title>
 </head>
 <body>
-<?php 
-    if(isset($_SESSION["connexion"]))
-    {
 
-?>
-    
     <?php
-        $nom = $image = $region = $role= "";
-        $nomErreur = $imageErreur = $regionErreur =$roleErreur = "";
-
+     if(isset($_SESSION["connexion"]))
+     {
+ 
+        $nom = $desc = $lieu = $date= $departement= "";
+        $nomErreur = $descErreur = $lieuErreur =$dateErreur=$departementErreur = "";
+     
+       
         $erreur = false;
       
         if($_SERVER['REQUEST_METHOD']== 'POST')
         {
-    
-            
+
+
+
             if(empty($_POST["nom"])){
                 $nomErreur = "Le nom ne peut pas être vide";
                 $erreur  = true;
@@ -41,27 +43,35 @@
             
             
         
-               if(empty($_POST["image"])){
-                $imageErreur = "Le lien ne peut pas etre vide";
+               if(empty($_POST["description"])){
+                $descErreur = "La description ne peut pas être vide";
                 $erreur  = true;
             }
             else{
-                 $image = ($_POST['image']);
+                 $desc = ($_POST['description']);
             }
-            if(empty($_POST["region"])){
-                $regionErreur = "vous devez avoir une region";
+            if(empty($_POST["lieu"])){
+                $lieuErreur = "vous devez avoir un lieu";
                 $erreur  = true;
             }
             else{
-                 $region = trojan($_POST['region']);
+                 $lieu = trojan($_POST['lieu']);
             }
             
-               if(empty($_POST["role"])){
-                $roleErreur = "vous devez remplir la confirmation ";
+               if(empty($_POST["date"])){
+                $dateErreur = "vous devez remplir la date ";
                 $erreur  = true;
             }
             else{
-                 $role = trojan($_POST['role']);
+                 $date = trojan($_POST['date']);
+            }
+
+            if(empty($_POST["departement"])){
+                $DepartementErreur = "vous devez remplir la date ";
+                $erreur  = true;
+            }
+            else{
+                 $departement = trojan($_POST['departement']);
             }
 
             $servername = "localhost";
@@ -74,8 +84,8 @@
             if (!$conn) {
               die("Connection failed: " . mysqli_connect_error());
             }
-            $sql = "INSERT INTO personnages (id,nom , image ,region, role)
-            VALUES (NULL, '$nom','$image' ,'$region', '$role')";
+            $sql = "INSERT INTO entreprise (idEntreprise,nom , description,content,neutre,mecontent ,lieu, date, departement)
+            VALUES (NULL, '$nom','$desc', 0, 0, 0 ,'$lieu', '$date','$departement')";
             if (mysqli_query($conn, $sql)) {
               echo "Enregistrement réussi";
             } else {
@@ -84,42 +94,41 @@
             mysqli_close($conn);
             
         }
-        if($_SESSION['connexion'] == true)
-        {
-
-      
             
+                 
         ?>
-        <div class="container-fluid" id="bg" >
-            <div  class="row text-center" >
-            <div  class="col-12">
-                <h1>Veuillez remplir le formulaire</h1>
-            <form action="ajouter.php" method="post">
-            <label> Nom du personnage : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $nom;?>"><br>
-                <p style="color:red;"><?php echo $nomErreur; ?></p>
-
-                <label>Lien vers une image du personnage :</label> <input type="text" name="image" value="<?php echo $image;?>"><br>
-                <p style="color:red;"><?php echo $imageErreur; ?></p>
-
-               <label> Region :</label> <input type="text" name="region" value="<?php echo $region;?>"> <br>
-               <p style="color:red;"><?php echo $regionErreur; ?></p>
-
-
-               <label>Role: </label> <input type="text" name="role" value="<?php echo $role;?>">  <br>
-               <p style="color:red;"><?php echo $roleErreur; ?></p>
-               
-               
-               
-
-         
-                <input type="submit">
-            </form>
+       
+            <div class="container-fluid" id="bg" >
+            <img src="img/happy.png" id="emoji"/>
+                    <h1>Veuillez remplir le formulaire pour ajouter une entreprise</h1>
+                <form action="ajouter.php" method="post">
+                <label> Nom de l'entreprise : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $nom ?>"><br>
+                    <p style="color:red;"><?php echo $nomErreur; ?></p>
+    
+                    <label>Description de l'entreprise :</label> <input type="text" name="description" value="<?php echo $desc ?>"><br>
+                    <p style="color:red;"><?php echo $descErreur; ?></p>
+    
+                   <label> Lieu :</label> <input type="text" name="lieu" value="<?php echo $lieu ?>"> <br>
+                   <p style="color:red;"><?php echo $lieuErreur; ?></p>
+    
+    
+                   <label>Date: </label> <input type="date" name="date" value="<?php echo $date ?>">  <br>
+                   <p style="color:red;"><?php echo $dateErreur; ?></p>
+                   <label>Departement: </label> <input type="text" name="departement" value="<?php echo $departement ?>">  <br>
+                   <p style="color:red;"><?php echo $departementErreur; ?></p>
+                   
+                  
+                   
+    
+             
+                    <input type="submit" />
+                </form>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
+        
         <?php
-        }
-          }else{
+        }else{
             header("Location:usager.php");
           }
         
@@ -140,7 +149,7 @@
 
 <div class="row text-center">
     <div class="col-12">
-  <a href="index.php" class="btn btn-info text-center" id="retour">retour à la page principale</a>
+  <a href="index.php" class="btn btn-primary text-center" id="retour">retour à la page principale</a>
   </div>
 </div>
 </body>

@@ -1,4 +1,8 @@
 <?php
+$_SESSION["connexion"] = true;
+if(isset($_SESSION["connexion"]))
+{
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -19,4 +23,7 @@ if ($conn->query($sql) === TRUE) {
 }$conn->close();
 
 header("Location:index.php");
+}else{
+  header("Location:usager.php");
+}
 ?>
