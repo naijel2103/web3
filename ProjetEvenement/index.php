@@ -35,7 +35,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   ?>
-
+  <div class="row text-center">
+    <div class="col-12 lien">
+    <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle entreprise</a>
+  </div>
+</div>
   <table class="table text-center">
   <thead>
     <tr>
@@ -58,6 +62,7 @@ if ($result->num_rows > 0) {
  
 
   <tbody>
+
     <tr>
       <th scope="row"><?php echo $row["idEntreprise"] ?></th>
       <td><?php echo $row["nom"] ?></td>
@@ -91,11 +96,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 </table>
-<div class="row text-center">
-    <div class="col-12">
-    <a href="ajouter.php" class="btn btn-primary text-center" >ajouter une nouvelle entreprise</a>
-  </div>
-</div>
+
 </body>
 </html>
 
