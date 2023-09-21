@@ -3,10 +3,13 @@ session_start();
 ?>
 
 
+
 <?php
 $_SESSION["connexion"] = true;
 if(isset($_SESSION["connexion"]))
 {
+
+    $id =$_GET['idEntreprise'];
 
 $servername = "localhost";
 $username = "root";
@@ -20,15 +23,16 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 // sql to delete a record
-$sql = "DELETE FROM entreprise WHERE idEntreprise=$id";
+$sql = "UPDATE entreprise SET contentEtu = contentEtu + 1  WHERE idEntreprise=$id";
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
 } else {
   echo "Error deleting record: " . $conn->error;
 }$conn->close();
 
-header("Location:index.php");
+header("Location:voteEtu.php?idEntreprise=".$id );
 }else{
   header("Location:usager.php");
 }
 ?>
+<input name="idEntreprise" type="hidden" id="idEntreprise" value="<?php echo $row["idEntreprise"]?>"/>

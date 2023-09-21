@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 14 Septembre 2023 à 20:57
+-- Généré le :  Jeu 21 Septembre 2023 à 20:43
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -30,9 +30,12 @@ CREATE TABLE `entreprise` (
   `idEntreprise` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `content` int(11) NOT NULL,
-  `neutre` int(11) NOT NULL,
-  `mecontent` int(11) NOT NULL,
+  `contentEtu` int(11) NOT NULL,
+  `neutreEtu` int(11) NOT NULL,
+  `mecontentEtu` int(11) NOT NULL,
+  `contentEmp` int(11) NOT NULL,
+  `neutreEmp` int(11) NOT NULL,
+  `mecontentEmp` int(11) NOT NULL,
   `departement` varchar(11) NOT NULL,
   `date` date NOT NULL,
   `lieu` varchar(255) NOT NULL
@@ -42,8 +45,8 @@ CREATE TABLE `entreprise` (
 -- Contenu de la table `entreprise`
 --
 
-INSERT INTO `entreprise` (`idEntreprise`, `nom`, `description`, `content`, `neutre`, `mecontent`, `departement`, `date`, `lieu`) VALUES
-(1, 'test', 'test', 0, 0, 0, 'test', '2023-09-15', 'test');
+INSERT INTO `entreprise` (`idEntreprise`, `nom`, `description`, `contentEtu`, `neutreEtu`, `mecontentEtu`, `contentEmp`, `neutreEmp`, `mecontentEmp`, `departement`, `date`, `lieu`) VALUES
+(1, 'test', 'test', 0, 0, 0, 0, 0, 0, 'test', '2023-09-15', 'test');
 
 --
 -- Index pour les tables exportées

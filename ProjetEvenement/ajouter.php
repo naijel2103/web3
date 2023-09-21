@@ -99,7 +99,11 @@
         ?>
        
             <div class="container-fluid" id="bg" >
-            <img src="img/happy.png" id="emoji"/>
+            <div  class="row h-100   text-center" >
+                    <div class="col-2">
+            <img src="img/logo.jpg" id="logo"/>
+            </div>
+            <div class="col-10">
                     <h1>Veuillez remplir le formulaire pour ajouter une entreprise</h1>
                 <form action="ajouter.php" method="post">
                 <label> Nom de l'entreprise : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $nom ?>"><br>
@@ -123,6 +127,8 @@
              
                     <input type="submit" />
                 </form>
+                </div>
+                </div>
                 </div>
                 </div>
             </div>
