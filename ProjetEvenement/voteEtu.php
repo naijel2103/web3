@@ -52,9 +52,9 @@ session_start();
             <div class="container-fluid  h-100" id="bg" >
               <div class="row h-100  align-items-center text-center">
                 <div class="col-4">
-                  <img src="img/happy.png" id="emoji" class="img-fluid"/> 
-                   <img src="img/neutral.png" id="emoji" class="img-fluid"/> 
-                   <img src="img/sad.png" id="emoji" class="img-fluid "/>  
+                <a href=<?php echo "voteEtuCompte.php" ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
+                <a href=<?php echo "voteEtuCompte.php" ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
+                <a href=<?php echo "voteEtuCompte.php" ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
                 </div>
                 </div>
             </div>
