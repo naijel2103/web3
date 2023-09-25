@@ -15,12 +15,12 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <title>Mofification</title>
 </head>
-<body>
+<body class="h-100" id="bg">
 
     <?php
 
         $_SESSION["connexion"] = true;
-        echo "La connexion est réussie" . $_SESSION["connexion"];
+
         if(isset($_SESSION["connexion"]))
         {
         $nom = $desc = $lieu = $date= $departement= "";
@@ -115,31 +115,95 @@ session_start();
           // output data of each row
           while($row = $result->fetch_assoc()) {
             ?>
-            <div class="container-fluid" id="bg" >
-            <img src="img/happy.png" id="emoji"/>
-                    <h1>Veuillez remplir le formulaire pour modifier</h1>
+           
+           <div class="container-fluid h-100" id="bg" >
+            <div  class="row h-100   text-center" >
+                    <div class="col-2">
+            <img src="img/logo.jpg" id="logo"/>
+            </div>
+            <div class="row text-center h-100">
+            <div class="col-12 ">
+            <a href="index.php" class="btn btn-primary text-center" id="retour">retour à la page principale</a>
+            </div>
+            <div class="col-12 justify-content-center align-items-center">
+                    <h1>Veuillez remplir le formulaire pour modifier une entreprise</h1>
                 <form action="modifier.php" method="post">
-                <label> Nom de l'entreprise : </label> <input type="text" name="nom" maxLength="50" value="<?php echo $row["nom"] ?>"><br>
+
+                <div class="form-group ">
+                  <div>
+                  <label> Nom de l'entreprise : </label>
+                  </div>
+                 <input type="text" placeholder="Nom..." class="form-control " name="nom" maxLength="50" value="<?php echo $nom ?>"><br>
                     <p style="color:red;"><?php echo $nomErreur; ?></p>
-    
-                    <label>Description de l'entreprise :</label> <input type="text" name="description" value="<?php echo $row["description"] ?>"><br>
+                 </div>
+
+
+                    <div>
+                    <label>Description de l'entreprise :</label> 
+                    </div>
+                    <input type="text" placeholder="Description..." class="form-control " name="description" value="<?php echo $desc ?>"><br>
                     <p style="color:red;"><?php echo $descErreur; ?></p>
     
-                   <label> Lieu :</label> <input type="text" name="lieu" value="<?php echo $row["lieu"] ?>"> <br>
+
+                    <div>
+                   <label> Lieu de l'entreprise:</label> 
+                   </div>
+                   <input type="text" placeholder="Lieu..." class="form-control " name="lieu" value="<?php echo $lieu ?>"> <br>
                    <p style="color:red;"><?php echo $lieuErreur; ?></p>
     
     
-                   <label>Date: </label> <input type="date" name="date" value="<?php echo $row["date"] ?>">  <br>
+
+                   <div>
+                   <label>Date: </label>
+                   </div>
+                    <input type="date" name="date" class="form-control " value="<?php echo $date ?>">  <br>
                    <p style="color:red;"><?php echo $dateErreur; ?></p>
-                   <label>Departement: </label> <input type="text" name="departement" value="<?php echo $row["departement"] ?>">  <br>
+                   
+                   
+                   <div>
+                   <label>Departement: </label> 
+                   </div>
+                   <select name="departement" id="departement" class="form-control ">
+                   <option value="Biologie">Biologie</option>
+                    <option value="Mathematiques">Mathematiques</option>
+                    <option value="education physique">education physique</option>
+                    <option value="Physique">Physique</option>
+                    <option value="Geo, Histoire et Sciences politiques">Geo, Histoire et Sciences politiques</option>
+                    <option value="Philosophie">Philosophie</option>
+                    <option value=" Psychologie"> Psychologie</option>
+                    <option value="Sciences sociales">Sciences sociales</option>
+                    <option value="Arts visuels">Arts visuels</option>
+                    <option value="Musique">Musique</option>
+                    <option value="Litterature et communication">Litterature et communication</option>
+                    <option value="Langues">Langues</option>
+                    <option value="Techniques d'hygiene dentaire">Techniques d'hygiene dentaire</option>
+                    <option value="Techniques de dietetique">Techniques de dietetique</option>
+                    <option value=" Techniques de soins infirmiers"> Techniques de soins infirmiers</option>
+                    <option value="Technologie de l'architecture">Technologie de l'architecture</option>
+                    <option value="Technologie du genie civil">Technologie du genie civil</option>
+                    <option value="Technologie de la mecanique du bâtiment">Technologie de la mecanique du bâtiment</option>
+                    <option value="Techniques de genie mecanique">Techniques de genie mecanique</option>
+                    <option value="Technologie de la mecanique industrielle">Technologie de la mecanique industrielle</option>
+                    <option value="Technologie du genie electrique">Technologie du genie electrique</option>
+                    <option value="Technologie du genie metallurgique">Technologie du genie metallurgique</option>
+                    <option value="Techniques policieres">Techniques policieres</option>
+                    <option value="Techniques d'education à l'enfance">Techniques d'education à l'enfance</option>
+                    <option value="Techniques de travail social">Techniques de travail social</option>
+                    <option value="Techniques de la documentation">Techniques de la documentation</option>
+                    <option value="Techniques administratives">Techniques administratives</option>
+                    <option value="Techniques de l'informatique">Techniques de l'informatique</option>
+                    <option value="Techniques de design d'interieur">Techniques de design d'interieur</option>
+                    </select> <br>
                    <p style="color:red;"><?php echo $departementErreur; ?></p>
                    
-                   <input name="idEntreprise" type="hidden" id="id" value="<?php echo $row["idEntreprise"]?>"/>
+                   <input name="idEntreprise" type="hidden" id="idEntreprise" value="<?php echo $row["idEntreprise"]?>"/>
                    
     
              
-                    <input type="submit" />
+                   <button type="submit" class="btn btn-primary ">Soumettre</button>
                 </form>
+                </div>
+                </div>
                 </div>
                 </div>
             </div>
@@ -162,9 +226,9 @@ session_start();
         
 
         function trojan($data){
-            $data = trim($data); //Enleve les caractères invisibles
+            $data = trim($data); //Enleve les caracteres invisibles
             $data = addslashes($data); //Mets des backslashs devant les ' et les  "
-            $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme ­< devient &lt
+            $data = htmlspecialchars($data); // Remplace les caracteres speciaux par leurs symboles comme ­< devient &lt
             
             return $data;
         }
@@ -175,10 +239,7 @@ session_start();
     
   
 
-<div class="row text-center">
-    <div class="col-12">
-  <a href="index.php" class="btn btn-info text-center" id="retour">retour à la page principale</a>
-  </div>
+
 </div>
 </body>
 </html>

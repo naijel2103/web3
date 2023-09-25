@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 21 Septembre 2023 à 20:43
+-- Généré le :  Lun 25 Septembre 2023 à 18:27
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -46,7 +46,10 @@ CREATE TABLE `entreprise` (
 --
 
 INSERT INTO `entreprise` (`idEntreprise`, `nom`, `description`, `contentEtu`, `neutreEtu`, `mecontentEtu`, `contentEmp`, `neutreEmp`, `mecontentEmp`, `departement`, `date`, `lieu`) VALUES
-(1, 'test', 'test', 0, 0, 0, 0, 0, 0, 'test', '2023-09-15', 'test');
+(1, 'ewqe', 'eewq', 6, 2, 1, 0, 0, 0, 'Techniques policieres', '2023-08-30', 'ewq'),
+(2, '123', '31', 0, 0, 0, 0, 0, 0, 'Technologie de la mecanique industrielle', '2023-09-25', '321'),
+(3, 'eqwe', 'ewq', 0, 0, 0, 0, 0, 0, 'eqweqwe', '2023-08-29', 'weqwq'),
+(5, '32131', '32131', 0, 0, 0, 0, 0, 0, 'dep1', '2023-09-07', '321312');
 
 --
 -- Index pour les tables exportées
@@ -66,7 +69,7 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `entreprise`
 --
 ALTER TABLE `entreprise`
-  MODIFY `idEntreprise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEntreprise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

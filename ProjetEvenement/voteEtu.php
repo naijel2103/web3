@@ -44,19 +44,35 @@ session_start();
           if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
+             
               ?>
-              <div class="container-fluid  h-100" id="bg" >
+              <div class="container-fluid  h-100"  >
+              <div  class="row h-100   text-center" >
+                    <div class="col-2">
+                  <img src="img/logo.jpg" id="logo"/>
+            </div>
                 <div class="row h-100  align-items-center text-center">
                   <div class="col-12">
-                  <a href=<?php echo "voteEtuHappy.php?idEntreprise=".$id ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
+                  <div class="col-4">
+                  <a href=<?php echo "voteEtuHappy.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
+                  </div>
+                  <div class="col-4">
                   <a href=<?php echo "voteEtuNeutral.php?idEntreprise=".$row["idEntreprise"]  ?> ><img src="img/neutral.png" id="emoji" class="img-fluid"/>  </a>
-                  <a href=<?php echo "voteEtuSad.php?idEntreprise=".$row["idEntreprise"]  ?> ><img src="img/sad.png" id="emoji" class="img-fluid"/>  </a>
+                  </div>
+                  <div class="col-4">
+                    <a href=<?php echo "voteEtuSad.php?idEntreprise=".$row["idEntreprise"]  ?> ><img src="img/sad.png" id="emoji" class="img-fluid"/>  </a>
+                  </div>
                   <input name="idEntreprise" type="hidden" id="idEntreprise" value="<?php echo $row["idEntreprise"]?>"/>
+                  <div  class="row h-100   text-center" >
+                    <div class="col-2">
+                      <img src="img/logo.jpg" id="logo"/>
                   </div>
                   </div>
+                  </div>
+                  
               </div>
               <?php
-                      
+                 
              
             }
           } else {
@@ -84,7 +100,11 @@ session_start();
           // output data of each row
           while($row = $result->fetch_assoc()) {
             ?>
-            <div class="container-fluid  h-100" id="bg" >
+            <div class="container-fluid  h-100"  >
+            <div  class="row h-100   text-center" >
+                    <div class="col-2">
+            <img src="img/logo.jpg" id="logo"/>
+            </div>
               <div class="row h-100  align-items-center text-center">
                 <div class="col-4">
                 <a href=<?php echo "voteEtuHappy.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
@@ -97,10 +117,9 @@ session_start();
                 </div>
                 <input name="idEntreprise" type="hidden" id="idEntreprise" value="<?php echo $row["idEntreprise"]?>"/>
                 
-                </div>
             </div>
             <?php
-                    
+                      
            
           }
         } else {

@@ -35,11 +35,23 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   ?>
-  <div class="row text-center">
-    <div class="col-12 lien">
-    <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle entreprise</a>
-  </div>
-</div>
+  <div class="container-fluid ">
+    <div class="row text-center">
+      <div class="col-2 ">
+          <img src="img/logo.jpg" id="logo"/>
+       </div>
+       </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="col-12 lien">
+                <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle entreprise</a>
+                <a href="gestionUsager.php" class="btn btn-primary text-center " >Voir les usager</a>
+            </div>
+            <div class="col-6 lien">
+                
+            </div>
+       </div>
+    </div>
   <table class="table text-center">
   <thead>
     <tr>
@@ -96,7 +108,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 </table>
-
+</div>
 </body>
 </html>
 

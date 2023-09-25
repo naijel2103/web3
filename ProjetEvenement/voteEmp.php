@@ -45,7 +45,11 @@ session_start();
             // output data of each row
             while($row = $result->fetch_assoc()) {
               ?>
-              <div class="container-fluid  h-100" id="bg" >
+              <div class="container-fluid  h-100"  >
+              <div  class="row h-100   text-center" >
+                    <div class="col-2">
+                  <img src="img/logo.jpg" id="logo"/>
+            </div>
                 <div class="row h-100  align-items-center text-center">
                   <div class="col-4">
                   <a href=<?php echo "voteEmpHappy.php?idEntreprise=".$id ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
@@ -89,8 +93,12 @@ session_start();
           // output data of each row
           while($row = $result->fetch_assoc()) {
             ?>
-            <div class="container-fluid  h-100" id="bg" >
-              <div class="row h-100  align-items-center text-center">
+            <div class="container-fluid  h-100"  >
+            <div  class="row h-100   text-center" >
+                    <div class="col-2">
+                  <img src="img/logo.jpg" id="logo"/>
+            </div>  
+            <div class="row h-100  align-items-center text-center">
                 <div class="col-4">
                 <a href=<?php echo "voteEmpHappy.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
                 </div>

@@ -14,10 +14,10 @@
     margin: 25px;
 }
 
-.bg
+#bg
 {
 
-    background-color: navy;
+    background-color: rgb(4, 45, 116);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -27,5 +27,12 @@
 
 .lien
 {
-    margin:50px;
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#form
+{
+    color: white;
 }

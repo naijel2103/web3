@@ -13,7 +13,7 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <title>usager</title>
 </head>
-<body>  
+<body class="h-100" id="bg">  
     <?php
      $user = $mdp = "";
      $userErreur = $mdpErreur  = "";
@@ -74,20 +74,35 @@ session_start();
             if ($_SERVER['REQUEST_METHOD'] == "GET" ){
                 
                 ?>
-                <div class="container-fluid h-100 bg" >
-                    <div  class="row h-100  align-items-center text-center" >
-                    <div  class="col-12">
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                        <label> Entrez votre Email : </label> <input type="text" name="user"  value="<?php echo $user;?>"><br>
-                        <p style="color:red;"><?php echo $userErreur; ?></p>
-        
-                       <label> Entrez votre Mot de passe :</label> <input type="password" name="mdp" value="<?php echo $mdp;?>"> <br>
-                       <p style="color:red;"><?php echo $mdpErreur; ?></p>
-                       <input type="submit">
-                       </form>
-                       </div>
-                    </div>
+           <div class="container-fluid h-100">
+           <div class="col-2">
+                         <img src="img/logo.jpg" id="logo"/>
+                  </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <form class="form-example" action="" method="post">
+                <h1>Entrer votre login</h1>
+                
+             
+                <div class="form-group">
+                    <label for="user">Email:</label>
+                    <input type="text" class="form-control username" id="username" placeholder="Entrer votre Email..." name="user">
+                    <p style="color:red;"><?php echo $userErreur; ?></p>
                 </div>
+                <div class="form-group">
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="password" class="form-control password" id="password" placeholder="Mot de passe..." name="mdp" value="<?php echo $mdp;?>">
+                    <p style="color:red;"><?php echo $mdpErreur; ?></p>
+                </div>
+                <button type="submit" class="btn btn-primary btn-customized">Soumettre</button>
+            
+               
+            </form>
+           
+        </div>
+    </div>
+</div>
                 <?php
             }
             function trojan($data){
@@ -98,5 +113,7 @@ session_start();
                 return $data;
             }
         ?>
+        
+
 </body>
 </html>
