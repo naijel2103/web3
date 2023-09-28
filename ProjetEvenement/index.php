@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
       <th scope="col-1">Departement</th>
       <th scope="col-1">Lieu</th>
       <th scope="col-1">Date</th>
-      <th scope="col-1">Vote pour les étudiants</th>
+      <th scope="col-1">Voir les statistiques</th>
       <th scope="col-1">Vote pour les employeurs</th>
       <th scope="col-1">Modifier</th>
       <th scope="col-1">Supprimer</th>
