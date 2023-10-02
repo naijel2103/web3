@@ -29,6 +29,6 @@ if ($conn->query($sql) === TRUE) {
 
 header("Location:GestionUsager.php");
 }else{
-  header("Location:usager.php");
+  header("Location:choixEtu.php");
 }
 ?>

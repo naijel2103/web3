@@ -37,8 +37,7 @@
             {
 
                 
-                $id =$_POST['id'];
-    
+               
                 if(empty($_POST["nom"])){
                     $nomErreur = "Le nom ne peut pas être vide";
                     $erreur  = true;
@@ -54,7 +53,10 @@
                     $erreur  = true;
                 }
                 else{
+                   
+                
                     $mdp = trojan($_POST['mdp']);
+                    $mdp = md5($mdp,false);
                 }
                 
                   
@@ -65,7 +67,10 @@
                     $erreur  = true;
                 }
                 else{
+                    
+                
                      $cmdp = trojan($_POST['cmdp']);
+                     $cmdp = md5($mdp,false);
                 }
                 
                    if(empty($_POST["addr"])){
@@ -83,8 +88,11 @@
                     $erreur  = true;
                 }
                 else{
+                 
                     $mdp = trojan($_POST['mdp']);
                     $cmdp = trojan($_POST['cmdp']);
+                    $mdp = md5($mdp,false);
+                    $cmdp = md5($mdp,false);
                 }
               
                 
@@ -110,7 +118,7 @@
                       die("Connection failed: " . mysqli_connect_error());
                     }
                     $sql = "INSERT INTO usager (id,usager , email, password, ip)
-                    VALUES (NULL, '$nom','$addr', $mdp,  '172.16.1.2')";
+                    VALUES (NULL, '$nom','$addr', '$mdp',  '172.16.1.2')";
                     if (mysqli_query($conn, $sql)) {
                       echo "Enregistrement réussi";
                     } else {
@@ -157,7 +165,7 @@
         
         <?php
         }else{
-            header("Location:usager.php");
+            header("Location:choixEtu.php");
           }
         function trojan($data){
             $data = trim($data); //Enleve les caractères invisibles

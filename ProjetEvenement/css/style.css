@@ -36,3 +36,16 @@
 {
     color: white;
 }
+#deconnexion
+{
+    margin: 50px;
+}
+#form
+{
+    color: aliceblue;
+}
+#myChart
+{
+    height: 600px !important;
+    width: 1200px !important;
+}

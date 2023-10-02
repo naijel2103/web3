@@ -26,8 +26,8 @@ session_start();
                 $user = $_POST["user"];
                 $mdp = $_POST["mdp"];
 
-                $mdp = md5($mdp,false);
-                echo $mdp;
+           
+                
             
             if(empty($_POST["user"])){
                 $userErreur = "Le nom ne peut pas être vide";
@@ -36,6 +36,16 @@ session_start();
            
             else{
                 $user = trojan($_POST['user']);
+            }
+            
+            if(empty($_POST["user"])){
+                $mdpErreur = "Le mot de passe ne peut pas être vide";
+                $erreur  = true;
+            }
+           
+            else{
+                $mdp = trojan($_POST['mdp']);
+                $mdp = md5($mdp,false);
             }
 
 
@@ -64,6 +74,37 @@ session_start();
         }else
         {
             echo"<h2>nom d'usager ou mot de passe invalide </h2>";
+            ?>
+                 <div class="container-fluid h-100">
+           <div class="col-2">
+                         <img src="img/ctr.jpg" id="logo"/>
+                  </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <form class="form-example" action="" method="post">
+                <h1>Entrer votre login</h1>
+                
+             
+                <div class="form-group">
+                    <label for="user">Email:</label>
+                    <input type="text" class="form-control username" id="username" placeholder="Entrer votre Email..." name="user">
+                    <p style="color:red;"><?php echo $userErreur; ?></p>
+                </div>
+                <div class="form-group">
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="password" class="form-control password" id="password" placeholder="Mot de passe..." name="mdp" value="<?php echo $mdp;?>">
+                    <p style="color:red;"><?php echo $mdpErreur; ?></p>
+                </div>
+                <button type="submit" class="btn btn-primary btn-customized">Soumettre</button>
+            
+               
+            </form>
+           
+             </div>
+                </div>
+            </div>
+            <?php
         }
        
         ?>
@@ -76,7 +117,7 @@ session_start();
                 ?>
            <div class="container-fluid h-100">
            <div class="col-2">
-                         <img src="img/logo.jpg" id="logo"/>
+                         <img src="img/ctr.jpg" id="logo"/>
                   </div>
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">

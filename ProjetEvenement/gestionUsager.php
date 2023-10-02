@@ -12,7 +12,7 @@ session_start();
 
     <title>Liste des usagers</title>
 </head>
-<body>
+<body class="h-100" id="bg">
 <?php
 
 if(isset($_SESSION["connexion"]))
@@ -38,8 +38,11 @@ if ($result->num_rows > 0) {
   <div class="container-fluid ">
     <div class="row text-center">
       <div class="col-2 ">
-          <img src="img/logo.jpg" id="logo"/>
+          <img src="img/ctr.jpg" id="logo"/>
        </div>
+       <div class="col-3 offset-6">
+       <a href="deconnexion.php" class="btn btn-primary text-center " id="deconnexion">deconnexion</a>
+        </div>
        </div>
     <div class="row text-center">
         <div class="col-12">
@@ -52,9 +55,10 @@ if ($result->num_rows > 0) {
             </div>
        </div>
     </div>
+    
   <table class="table text-center">
   <thead>
-    <tr>
+    <tr id="form">
     <th scope="col-1">Id</th>
       <th scope="col-1">Nom</th>
       <th scope="col-1">Email</th>
@@ -70,7 +74,7 @@ if ($result->num_rows > 0) {
 
   <tbody>
 
-    <tr>
+    <tr id="form">
       <th scope="row"><?php echo $row["id"] ?></th>
       <td><?php echo $row["usager"] ?></td>
       <td><?php echo $row["email"] ?></td>
@@ -92,7 +96,7 @@ if ($result->num_rows > 0) {
 }
 }else
 {
-  header("Location:usager.php");
+  header("Location:choixEtu.php");
 }
 
 $conn->close();

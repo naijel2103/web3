@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +10,9 @@ session_start();
 
     <title>Liste des entreprises</title>
 </head>
-<body>
+<body class="h-100" id="bg">
 <?php
 
-if(isset($_SESSION["connexion"]))
-{
 
 
 
@@ -38,36 +34,32 @@ if ($result->num_rows > 0) {
   <div class="container-fluid ">
     <div class="row text-center">
       <div class="col-2 ">
-          <img src="img/logo.jpg" id="logo"/>
+          <img src="img/ctr.jpg" id="logo"/>
        </div>
        <div class="col-3 offset-6">
-       <a href="deconnexion.php" class="btn btn-primary text-center " id="deconnexion">deconnexion</a>
+       <a href="usager.php" class="btn btn-primary text-center " id="deconnexion">connexion</a>
         </div>
+      
        </div>
     <div class="row text-center">
+    
         <div class="col-12">
-            <div class="col-12 lien">
-                <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle entreprise</a>
-                <a href="gestionUsager.php" class="btn btn-primary text-center " >Voir les usager</a>
-            </div>
             <div class="col-6 lien">
                 
             </div>
        </div>
     </div>
+<form id="form">
   <table class="table text-center">
   <thead>
-    <tr>
+    <tr id="form">
     <th scope="col-1">Id</th>
       <th scope="col-1">Nom</th>
       <th scope="col-1">Description</th>
       <th scope="col-1">Departement</th>
       <th scope="col-1">Lieu</th>
       <th scope="col-1">Date</th>
-      <th scope="col-1">Voir les statistiques</th>
-      <th scope="col-1">Vote pour les employeurs</th>
-      <th scope="col-1">Modifier</th>
-      <th scope="col-1">Supprimer</th>
+      <th scope="col-1">Vote pour les etudiants</th>
     </tr>
   </thead>
   <?php
@@ -78,20 +70,17 @@ if ($result->num_rows > 0) {
 
   <tbody>
 
-    <tr>
-      <th scope="row"><?php echo $row["idEntreprise"] ?></th>
+    <tr id="form">
+      <th scope="row" ><?php echo $row["idEntreprise"] ?></th>
       <td><?php echo $row["nom"] ?></td>
       <td><?php echo $row["description"] ?></td>
       <td><?php echo $row["departement"] ?></td>
       <td><?php echo $row["lieu"] ?></td>
       <td><?php echo $row["date"] ?></td>
-      <td><a href=<?php echo "statistique.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/stats.png" id="imagecss" /> </a></td>
-      <td><a href=<?php echo "voteEmp.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEmp.png" id="imagecss" /></a></td>
-      <td><a href=<?php echo "modifier.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/modif.png" id="imagecss" /> </a></td>
-      <td><a href=<?php echo "supprimer.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/supp.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "voteEtu.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEtu.png" id="imagecss" /> </a></td>
     </tr>
   </tbody>
-
+  </form>
     
     
     
@@ -103,10 +92,7 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-}else
-{
-  header("Location:choixEtu.php");
-}
+
 
 $conn->close();
 ?>

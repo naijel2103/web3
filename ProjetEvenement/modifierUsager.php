@@ -37,63 +37,72 @@ session_start();
             $id =$_POST['id'];
 
             if(empty($_POST["nom"])){
-                $nomErreur = "Le nom ne peut pas être vide";
-                $erreur  = true;
-            }
-            else{
-                $nom = trojan($_POST['nom']);
-            }
-            
-            
-            
-            if(empty($_POST["mdp"])){
-                $mdpErreur = "Le mot de passe ne peut pas etre vide";
-                $erreur  = true;
-            }
-            else{
-                $mdp = trojan($_POST['mdp']);
-            }
-            
-              
-           
-            
-               if(empty($_POST["cmdp"])){
-                $cmdpErreur = "vous devez remplir la confirmation ";
-                $erreur  = true;
-            }
-            else{
-                 $cmdp = trojan($_POST['cmdp']);
-            }
-            
-               if(empty($_POST["addr"])){
-                $addrErreur = "L'adresse courriel ne peut pas être vide";
-                $erreur  = true;
-            }
-            else{
-               $addr = trojan($_POST['addr']);
-            }
-            
-           
-
-            if(($_POST["mdp"]) != ($_POST["cmdp"])){
-                $same = "les mots de passe ne sont pas identiques";
-                $erreur  = true;
-            }
-            else{
-                $mdp = trojan($_POST['mdp']);
-                $cmdp = trojan($_POST['cmdp']);
-            }
+              $nomErreur = "Le nom ne peut pas être vide";
+              $erreur  = true;
+          }
+          else{
+              $nom = trojan($_POST['nom']);
+          }
+          
+          
+          
+          if(empty($_POST["mdp"])){
+              $mdpErreur = "Le mot de passe ne peut pas etre vide";
+              $erreur  = true;
+          }
+          else{
+             
+          
+              $mdp = trojan($_POST['mdp']);
+              $mdp = md5($mdp,false);
+          }
           
             
-            if(filter_var(($_POST["addr"]), FILTER_VALIDATE_EMAIL)){
-                
-                $addr = trojan($_POST['addr']);
-                
-              }else{
-                $addrErreur = "l'addresse courriel n'est pas valide";
-                $erreur  = true;
-                
-              }
+         
+          
+             if(empty($_POST["cmdp"])){
+              $cmdpErreur = "vous devez remplir la confirmation ";
+              $erreur  = true;
+          }
+          else{
+              
+          
+               $cmdp = trojan($_POST['cmdp']);
+               $cmdp = md5($mdp,false);
+          }
+          
+             if(empty($_POST["addr"])){
+              $addrErreur = "L'adresse courriel ne peut pas être vide";
+              $erreur  = true;
+          }
+          else{
+             $addr = trojan($_POST['addr']);
+          }
+          
+         
+
+          if(($_POST["mdp"]) != ($_POST["cmdp"])){
+              $same = "les mots de passe ne sont pas identiques";
+              $erreur  = true;
+          }
+          else{
+           
+              $mdp = trojan($_POST['mdp']);
+              $cmdp = trojan($_POST['cmdp']);
+              $mdp = md5($mdp,false);
+              $cmdp = md5($mdp,false);
+          }
+        
+          
+          if(filter_var(($_POST["addr"]), FILTER_VALIDATE_EMAIL)){
+              
+              $addr = trojan($_POST['addr']);
+              
+            }else{
+              $addrErreur = "l'addresse courriel n'est pas valide";
+              $erreur  = true;
+              
+            }
 
             
             $servername = "localhost";
@@ -141,17 +150,17 @@ session_start();
             <a href="gestionUsager.php" class="btn btn-primary text-center" id="retour">retour à la page de gestion d'usager</a>
             </div>
             <form action="modifierUsager.php" method="post">
-            <label> Nom d'usager : </label> <input type="text" name="nom" maxLength="15" value="<?php echo $nom;?>"><br>
+            <label> Nom d'usager : </label> <input type="text" name="nom" maxLength="15" value="<?php echo $row["usager"] ?>"><br>
                 <p style="color:red;"><?php echo $nomErreur; ?></p>
 
-               <label> Mot de passe :</label> <input type="password" name="mdp" value="<?php echo $mdp;?>"> <br>
+               <label> Mot de passe :</label> <input type="password" name="mdp" value="<?php echo $mdp?>"> <br>
                <p style="color:red;"><?php echo $mdpErreur; ?></p>
 
 
                <label>  Confirmation du mot de passe :</label> <input type="password" name="cmdp" value="<?php echo $cmdp;?>">  <br>
                <p style="color:red;"><?php echo $cmdpErreur; ?></p>
                <p style="color:red;"><?php echo $same; ?></p>
-               <label> Adresse courriel :</label> <input type="email" name="addr" value="<?php echo $addr;?>"> <br>
+               <label> Adresse courriel :</label> <input type="email" name="addr" value="<?php echo $row["email"]?>"> <br>
                <p style="color:red;"><?php echo $addrErreur; ?></p>
 
                <input name="id" type="hidden" id="id" value="<?php echo $row["id"]?>"/>
@@ -168,7 +177,7 @@ session_start();
           echo "0 results";
         }
     }else{
-        header("Location:usager.php");
+        header("Location:choixEtu.php");
       }
     
         $conn->close();

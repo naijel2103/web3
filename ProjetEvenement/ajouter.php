@@ -195,7 +195,7 @@
         
         <?php
         }else{
-            header("Location:usager.php");
+            header("Location:choixEtu.php");
           }
         
 

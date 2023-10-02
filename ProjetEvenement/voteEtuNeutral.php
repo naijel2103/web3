@@ -31,7 +31,7 @@ if ($conn->query($sql) === TRUE) {
 
 header("Location:voteEtu.php?idEntreprise=".$id );
 }else{
-  header("Location:usager.php");
+  header("Location:ChoixEtu.php");
 }
 ?>
 <input name="idEntreprise" type="hidden" id="idEntreprise" value="<?php echo $row["idEntreprise"]?>"/>

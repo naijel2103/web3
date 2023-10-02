@@ -133,7 +133,7 @@ session_start();
                   <div>
                   <label> Nom de l'entreprise : </label>
                   </div>
-                 <input type="text" placeholder="Nom..." class="form-control " name="nom" maxLength="50" value="<?php echo $nom ?>"><br>
+                 <input type="text" placeholder="Nom..." class="form-control " name="nom" maxLength="50" value="<?php  echo $row["nom"] ?>"><br>
                     <p style="color:red;"><?php echo $nomErreur; ?></p>
                  </div>
 
@@ -141,14 +141,14 @@ session_start();
                     <div>
                     <label>Description de l'entreprise :</label> 
                     </div>
-                    <input type="text" placeholder="Description..." class="form-control " name="description" value="<?php echo $desc ?>"><br>
+                    <input type="text" placeholder="Description..." class="form-control " name="description" value="<?php echo $row["description"] ?>"><br>
                     <p style="color:red;"><?php echo $descErreur; ?></p>
     
 
                     <div>
                    <label> Lieu de l'entreprise:</label> 
                    </div>
-                   <input type="text" placeholder="Lieu..." class="form-control " name="lieu" value="<?php echo $lieu ?>"> <br>
+                   <input type="text" placeholder="Lieu..." class="form-control " name="lieu" value="<?php echo $row["lieu"] ?>"> <br>
                    <p style="color:red;"><?php echo $lieuErreur; ?></p>
     
     
@@ -156,7 +156,7 @@ session_start();
                    <div>
                    <label>Date: </label>
                    </div>
-                    <input type="date" name="date" class="form-control " value="<?php echo $date ?>">  <br>
+                    <input type="date" name="date" class="form-control " value="<?php echo $row["date"] ?>">  <br>
                    <p style="color:red;"><?php echo $dateErreur; ?></p>
                    
                    
@@ -213,7 +213,7 @@ session_start();
           echo "0 results";
         }
     }else{
-        header("Location:usager.php");
+        header("Location:choixEtu.php");
       }
     
         $conn->close();
