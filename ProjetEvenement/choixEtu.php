@@ -77,7 +77,7 @@ if ($result->num_rows > 0) {
       <td><?php echo $row["departement"] ?></td>
       <td><?php echo $row["lieu"] ?></td>
       <td><?php echo $row["date"] ?></td>
-      <td><a href=<?php echo "voteEtu.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEtu.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "voteEtu.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/vote.webp" id="imagecss" /> </a></td>
     </tr>
   </tbody>
   </form>

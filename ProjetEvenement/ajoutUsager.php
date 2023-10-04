@@ -140,17 +140,17 @@
             <a href="gestionUsager.php" class="btn btn-primary text-center" id="retour">retour à la page de gestion d'usager</a>
             </div>
             <form action="ajoutUsager.php" method="post">
-            <label> Nom d'usager : </label> <input type="text" name="nom" maxLength="15" value="<?php echo $nom;?>"><br>
+            <label> Nom d'usager : </label> <input type="text" name="nom" class="form-control " maxLength="15" value="<?php echo $nom;?>"><br>
                 <p style="color:red;"><?php echo $nomErreur; ?></p>
 
-               <label> Mot de passe :</label> <input type="password" name="mdp" value="<?php echo $mdp;?>"> <br>
+               <label> Mot de passe :</label> <input type="password" name="mdp" class="form-control " value="<?php echo $mdp;?>"> <br>
                <p style="color:red;"><?php echo $mdpErreur; ?></p>
 
 
-               <label>  Confirmation du mot de passe :</label> <input type="password" name="cmdp" value="<?php echo $cmdp;?>">  <br>
+               <label>  Confirmation du mot de passe :</label> <input type="password" class="form-control " name="cmdp" value="<?php echo $cmdp;?>">  <br>
                <p style="color:red;"><?php echo $cmdpErreur; ?></p>
                <p style="color:red;"><?php echo $same; ?></p>
-               <label> Adresse courriel :</label> <input type="email" name="addr" value="<?php echo $addr;?>"> <br>
+               <label> Adresse courriel :</label> <input type="email" name="addr" class="form-control " value="<?php echo $addr;?>"> <br>
                <p style="color:red;"><?php echo $addrErreur; ?></p>
 
               

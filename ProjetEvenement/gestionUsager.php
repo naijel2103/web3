@@ -78,8 +78,8 @@ if ($result->num_rows > 0) {
       <th scope="row"><?php echo $row["id"] ?></th>
       <td><?php echo $row["usager"] ?></td>
       <td><?php echo $row["email"] ?></td>
-      <td><a href=<?php echo "modifierUsager.php?id=".$row["id"] ?> ><img src="img/modif.png" id="imagecss" /> </a></td>
-      <td><a href=<?php echo "supprimerUsager.php?id=".$row["id"] ?> ><img src="img/supp.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "modifierUsager.php?id=".$row["id"] ?> ><img src="img/modifB.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "supprimerUsager.php?id=".$row["id"] ?> ><img src="img/suppB.png" id="imagecss" /> </a></td>
     </tr>
   </tbody>
 

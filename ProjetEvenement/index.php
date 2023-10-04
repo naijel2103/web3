@@ -85,7 +85,7 @@ if ($result->num_rows > 0) {
       <td><?php echo $row["departement"] ?></td>
       <td><?php echo $row["lieu"] ?></td>
       <td><?php echo $row["date"] ?></td>
-      <td><a href=<?php echo "statistique.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/stats.png" id="imagecss" /> </a></td>
+      <td><a href=<?php echo "statistique.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/graphique.png" id="imagecss" /> </a></td>
       <td><a href=<?php echo "voteEmp.php?idEntreprise=".$row["idEntreprise"] ?>><img src="img/voteEmp.png" id="imagecss" /></a></td>
       <td><a href=<?php echo "modifier.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/modif.png" id="imagecss" /> </a></td>
       <td><a href=<?php echo "supprimer.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/supp.png" id="imagecss" /> </a></td>
