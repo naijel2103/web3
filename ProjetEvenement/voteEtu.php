@@ -54,6 +54,7 @@ session_start();
                 <div class="row h-100  align-items-center text-center">
                   <div class="col-12">
                   <div class="col-4">
+                 
                   <a href=<?php echo "voteEtuHappy.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
                   </div>
                   <div class="col-4">
@@ -83,7 +84,8 @@ session_start();
             
         }
             
-        
+        if($_SERVER['REQUEST_METHOD']== 'GET')
+        {
         $servername = "localhost";
         $username = "root";
         $password = "root";
@@ -105,6 +107,7 @@ session_start();
                     <div class="col-2">
             <img src="img/logo.jpg" id="logo"/>
             </div>
+          
               <div class="row h-100  align-items-center text-center">
                 <div class="col-4">
                 <a href=<?php echo "voteEtuHappy.php?idEntreprise=".$row["idEntreprise"] ?> ><img src="img/happy.png" id="emoji" class="img-fluid"/>  </a>
@@ -126,7 +129,7 @@ session_start();
           echo "0 results";
         }
         $conn->close();
-        
+        }
             
         ?>
       

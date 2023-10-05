@@ -115,9 +115,9 @@ session_start();
             if ($conn->connect_error) {
               die("Connection failed: " . $conn->connect_error);
             }
-            $sql = "UPDATE usager SET usager='".$_POST['nom']."', email='".$_POST['addr']."', password='".$_POST['mdp']."'  WHERE id=$id";
+            $sql = "UPDATE usager SET usager='".$nom."', email='".$addr."', password='".$mdp."'  WHERE id=$id";
             if ($conn->query($sql) === TRUE) {
-              echo "Record updated successfully";
+              echo "Vous avez modifier l'usager";
             } else {
               echo "Error updating record: " . $conn->error;
             }

@@ -25,6 +25,8 @@ if ($conn->connect_error) {
 $sql = "UPDATE entreprise SET mecontentEtu = mecontentEtu + 1  WHERE idEntreprise=$id";
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
+
+  
 } else {
   echo "Error deleting record: " . $conn->error;
 }$conn->close();
