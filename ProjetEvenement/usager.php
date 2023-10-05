@@ -73,7 +73,7 @@ session_start();
                 
         }else
         {
-            echo"<h2>nom d'usager ou mot de passe invalide </h2>";
+           
             ?>
                  <div class="container-fluid h-100">
            <div class="col-2">
@@ -84,8 +84,9 @@ session_start();
 
             <form class="form-example" action="" method="post">
                 <h1>Entrer votre login</h1>
-                
-             
+                <?php
+                echo"<h2 id='mess'>nom d'usager ou mot de passe invalide </h2>";
+               ?>
                 <div class="form-group">
                     <label for="user">Email:</label>
                     <input type="text" class="form-control username" id="username" placeholder="Entrer votre Email..." name="user">

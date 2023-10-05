@@ -119,14 +119,14 @@ session_start();
            <div class="container-fluid h-100" id="bg" >
             <div  class="row h-100   text-center" >
                     <div class="col-2">
-            <img src="img/logo.jpg" id="logo"/>
+            <img src="img/ctr.jpg" id="logo"/>
             </div>
             <div class="row text-center h-100">
             <div class="col-12 ">
             <a href="index.php" class="btn btn-primary text-center" id="retour">retour à la page principale</a>
             </div>
             <div class="col-12 justify-content-center align-items-center">
-                    <h1>Veuillez remplir le formulaire pour modifier une entreprise</h1>
+                    <h1>Veuillez remplir le formulaire pour modifier un evenement</h1>
                 <form action="modifier.php" method="post">
 
                 <div class="form-group ">

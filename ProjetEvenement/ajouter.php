@@ -104,14 +104,14 @@
             <div class="container-fluid h-100" id="bg" >
             <div  class="row h-100   text-center" >
                     <div class="col-2">
-            <img src="img/logo.jpg" id="logo"/>
+            <img src="img/ctr.jpg" id="logo"/>
             </div>
             <div class="row text-center">
             <div class="col-12 ">
             <a href="index.php" class="btn btn-primary text-center" id="retour">retour à la page principale</a>
             </div>
             <div class="col-12">
-                    <h1>Veuillez remplir le formulaire pour ajouter une entreprise</h1>
+                    <h1>Veuillez remplir le formulaire pour ajouter un envenement</h1>
                     <form action="ajouter.php" method="post">
 
 <div class="form-group ">

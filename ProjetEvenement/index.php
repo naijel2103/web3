@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     <div class="row text-center">
         <div class="col-12">
             <div class="col-12 lien">
-                <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle entreprise</a>
+                <a href="ajouter.php" class="btn btn-primary text-center " >ajouter une nouvelle evenement</a>
                 <a href="gestionUsager.php" class="btn btn-primary text-center " >Voir les usager</a>
             </div>
             <div class="col-6 lien">
